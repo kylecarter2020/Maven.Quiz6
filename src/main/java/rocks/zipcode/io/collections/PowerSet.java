@@ -17,7 +17,8 @@ public class PowerSet<TypeOfSet> {
      */
     public Set<Set<TypeOfSet>> permute() {
         List<Set<TypeOfSet>> listOfSets = new ArrayList<>();
-        List<TypeOfSet> items = (List<TypeOfSet>) CollectionUtils.flatten(this.originalSet);
+        List<TypeOfSet> items = new ArrayList<>();
+        items.addAll(this.originalSet);
         listOfSets.add(Collections.emptySet());
         Set<Set<TypeOfSet>> results = new HashSet<>();
         for (int i = 1; i <= items.size(); i++) {
@@ -31,26 +32,8 @@ public class PowerSet<TypeOfSet> {
             }
 
         }
-
-
-//        static void subString(char str[], int n) {
-//            // Pick starting point
-//            for (int len = 1; len <= n; len++) {
-//                // Pick ending point
-//                for (int i = 0; i <= n - len; i++) {
-//                    //  Print characters from current
-//                    // starting point to current ending
-//                    // point.
-//                    int j = i + len - 1;
-//                    for (int k = i; k <= j; k++) {
-//                        System.out.print(str[k]);
-//                    }
-//
-//                    System.out.println();
-//                }
-//            }
-
         results.addAll(listOfSets);
+        results.add(this.originalSet);
             return results;
     }
 
