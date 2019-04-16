@@ -1,6 +1,9 @@
 package rocks.zipcode.io.generics;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Stream;
 
 public class GenericUtils {
     /**
@@ -9,6 +12,7 @@ public class GenericUtils {
      * @return array with contents identical to `collection`
      */
     public static <T> T[] toArray(Collection<T> collection) {
-        return null;
+        ArrayList<T> collectionAsList = new ArrayList<>(collection);
+        return collectionAsList.toArray((T[]) Array.newInstance(collectionAsList.get(0).getClass(),collectionAsList.size()));
     }
 }
